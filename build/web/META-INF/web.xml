@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <display-name>Esteira de Propostas</display-name>
+
+    <!-- Encoding UTF-8 -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Servlet: Proposta -->
+    <servlet>
+        <servlet-name>PropostaServlet</servlet-name>
+        <servlet-class>controller.PropostaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PropostaServlet</servlet-name>
+        <url-pattern>/proposta</url-pattern>
+    </servlet-mapping>
+
+    <!-- Servlet: Cliente -->
+    <servlet>
+        <servlet-name>ClienteServlet</servlet-name>
+        <servlet-class>controller.ClienteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClienteServlet</servlet-name>
+        <url-pattern>/cliente</url-pattern>
+    </servlet-mapping>
+
+    <!-- Servlet: Esteira -->
+    <servlet>
+        <servlet-name>EsteiraServlet</servlet-name>
+        <servlet-class>controller.EsteiraServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EsteiraServlet</servlet-name>
+        <url-pattern>/esteira</url-pattern>
+    </servlet-mapping>
+
+    <!-- Página inicial -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- Erros -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/erro.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/views/erro.jsp</location>
+    </error-page>
+
+    <!-- Timeout de sessão -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+</web-app>
